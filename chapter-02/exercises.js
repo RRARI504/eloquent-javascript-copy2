@@ -26,9 +26,16 @@ LOGS =>
 
 */
 
-function triangles() {
-  
+function triangles(number) {
+  for (var i = 1; i <= number; i++) {
+    var line = '';
+    for (var j = 1; j <= i; j++) {
+      line += '#';
+    }
+    console.log(line);
+  }
 }
+
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -48,6 +55,18 @@ on the number:
 */
 
 function fizzBuzz(start, end) {
+  for(var i = start; i <= end; i++){ //loop through the start and end values
+    if(i % 3 !== 0 && i % 5 !== 0 ){
+      console.log(i);
+    }else if(i % 3 === 0 && i % 5 === 0){
+      console.log('fizzbuzz')
+    }else if(i % 5 === 0){
+      console.log('buzz')
+    }else if(i % 3 === 0){
+      console.log('fizz')
+    }
+    
+  }
   
 }
 
@@ -82,8 +101,21 @@ LOGS =>
 */
 
 function drawChessboard(x) {
-
-
+  let string = ''; //initiate an empty string
+  for(var i = 0; i < x; i++){//iterate through the size positively
+    let row = '';
+    for(var j = 0; j < x; j++){
+      if((i + j) % 2 === 0){
+        row += ' ';
+      }else{
+        row += '#';
+      }
+     
+    }
+      string += row + '\n';
+  }
+  
+  console.log(string);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
