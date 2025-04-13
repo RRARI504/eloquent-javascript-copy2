@@ -38,7 +38,17 @@ function isEven(n) {
 // countChars //////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function countChars() {
+function countChars(string, char) {
+  let count = 0;
+  for(var i = 0; i < string.length; i++){
+    if(string[i] === char){
+      count += 1
+
+    }
+
+
+  }
+  return count;
 
 }
 
@@ -46,8 +56,19 @@ function countChars() {
 // countBs /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function countBs() {
+function countBs(string) {
+  //returns a number that indicates how many uppercase B 
+  //characters there are in the string.
+  let count = 0;
+  for(var i = 0; i < string.length; i++){
+   if(string[i] === 'B'){
+    count += 1;
+   }
 
+  }
+  return count;
+
+ 
 }
 
 ////////////////////////////////////////////////////////////////////////////////
