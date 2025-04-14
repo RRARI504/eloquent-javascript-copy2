@@ -2,7 +2,21 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function range() {
+function range(start, end, step) {
+  let output = []
+
+  
+
+  if (step > 0) {
+    for (var i = start; i <= end; i += step) {
+      output.push(i);
+    }
+  } else if (step < 0) {
+    for (var i = start; i >= end; i += step) {
+      output.push(i);
+    }
+  }
+  return output;
 
 }
 
@@ -10,7 +24,12 @@ function range() {
 // sum /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function sum() {
+function sum(array) {
+  let add = 0
+  for(var i = 0; i < array.length; i++){
+    add += array[i]
+  }
+  return add;
 
 }
 
