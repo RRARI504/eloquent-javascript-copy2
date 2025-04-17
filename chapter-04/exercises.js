@@ -2,15 +2,20 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function range(start, end, step) {
-  let output = []
-
+function range(start, end, step = start < end ?  1 : -1) {
   
+  let output = []
+  
+  if(start === end){
+    return []
+
+  }
 
   if (step > 0) {
     for (var i = start; i <= end; i += step) {
       output.push(i);
     }
+    
   } else if (step < 0) {
     for (var i = start; i >= end; i += step) {
       output.push(i);
@@ -37,7 +42,14 @@ function sum(array) {
 // reverseArray ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArray() {
+function reverseArray(array) {
+  output = [];
+
+  for(var i = array.length - 1; i >= 0; i--){
+    output.push(array[i])
+  }
+  return output;
+
 
 }
 
@@ -45,7 +57,16 @@ function reverseArray() {
 // reverseArrayInPlace /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArrayInPlace() {
+function reverseArrayInPlace(array) {
+  for(var i = 0; i < Math.floor(array.length / 2); i++){
+    //method in JavaScript rounds a number down to the nearest 
+    //integer less than or equal to the given number.
+    let old = array[i]
+    array[i] = array[array.length - 1 - i]
+    array[array.length - 1 - i] = old
+
+  }
+
 
 }
 
