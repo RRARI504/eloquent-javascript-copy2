@@ -74,7 +74,15 @@ function reverseArrayInPlace(array) {
 // arrayToList /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function arrayToList() {
+function arrayToList(array) {
+  let rest = null;//because we are moving from the outside in
+  for(var i = array.length - 1; i >= 0; i--){
+    rest = {value: array[i], rest: rest}
+    //reassign rest to an object that has a value prop equal to current iteration
+    //and a key created assigned to current value of rest which on first iteration is null 
+
+  }
+  return rest;
 
 }
 
@@ -82,7 +90,19 @@ function arrayToList() {
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray() {
+function listToArray(list, array=[]) {
+  //base
+  if(list.rest === null){
+    array.push(list.value)
+    return array;
+
+  }
+
+  //recursion
+  array.push(list.value)
+
+  return listToArray(list.rest, array)
+ 
 
 }
 
@@ -90,15 +110,45 @@ function listToArray() {
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend() {
+function prepend(element, list) {
+  //console.log(list)
+  //create new list that adds element to front of input list
 
+ return { //return a new object w value set to the 
+  //the element passed in and rest set to the list.
+  //made a new value pointed to the begining of an existing list
+  value: element,
+  rest: list
+  
+ }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // nth /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function nth() {
+function nth(list, number) {
+ //console.log(list)
+ let node = list;//set variable to node to keep track 
+ //node in list
+ let count = 0;
+
+ while(node !== null){
+  //while loop will go if node exist 
+  if(count === number){
+    //if count or current position 
+    //is equal to the number given
+    return node.value
+    //return value at node
+  }
+
+  //reassign current to the next node which is stores in .rest
+  node = node.rest;
+  count++
+
+ }
+ return undefined;
+
 
 }
 
