@@ -47,36 +47,31 @@ function every(array, func) {
 // /////////////////////////////////////////////////////////////////////////////
 
 function dominantDirection(string) {
-  const scriptCounts = {};
-  //Initializes an empty object to track the number of times each direction appears
-  let maxCount = 0;
-  //keeps track of highest count 
-  let dominantDir = "ltr"; // Default direction
-  //set default position as lrt
-
-  for (let char of string) {
-    //loop through each charachter in string
-    const script = characterScript(char.codePointAt(0));
-    //make variable that converts char to unicode point
-    //characterScript which returns info about the script (like name, direction)
-    // or null if none is found.
-    if (script) {//if dcript exsist
-      const dir = script.direction;
-      //Gets the writing direction of the script
-      scriptCounts[dir] = (scriptCounts[dir] || 0) + 1;
-      //Updates the count for that direction.
-
-      if (scriptCounts[dir] > maxCount) {
-        //if this direction now has the highest count, update the tracker.
-        maxCount = scriptCounts[dir];
-        //Update maxCount to the new highest value.
-        dominantDir = dir;
-        //Set dominantDir to the direction that now has the most occurrences.
+  //init ltr and rtl as arrays
+  let ltr = []
+  let rtl = []
+  
+  for(var i = 0; i < string.length; i++){
+    //iterate through string postively
+    let script = characterScript(string.charCodeAt(i))
+    //make a variable that is assigned to the result of invoking characterScript on current characters code
+    
+    //determine if script is not equal to null 
+    if(script !== null){
+      if(script.direction === 'ltr'){
+        ltr.push(script)
+      }else{
+        rtl.push(script)
       }
     }
   }
-  return dominantDir;
   
+
+if(ltr.length > rtl.length){
+  return 'ltr';
+}else{
+  return 'rtl';
+}
 
 }
 
