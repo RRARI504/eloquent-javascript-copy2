@@ -156,7 +156,30 @@ function nth(list, number) {
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual() {
+function deepEqual(x, y) {
+  //check if x and y are simple datatypes
+  if(typeof x !== 'object' && typeof y !== 'object'){
+    return x === y
+  }
+  //checks if x or y is still an object
+  if(typeof x !== 'object' || typeof y !== 'object'){
+    return false;
+    //if both values not complex return false
+  }
+
+  let xKeys = Object.keys(x)
+  let yKeys = Object.keys(y)
+
+for(let i = 0; i < xKeys.length; i++){
+  if(!yKeys.includes(xKeys[i]) || !deepEqual(x[xKeys[i]], y[yKeys[i]] ) ){
+
+    return false;
+  }
+
+
+}
+return true;
+  
 
 }
 
